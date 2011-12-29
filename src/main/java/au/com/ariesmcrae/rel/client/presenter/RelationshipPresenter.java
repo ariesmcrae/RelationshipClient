@@ -16,7 +16,7 @@
 package au.com.ariesmcrae.rel.client.presenter;
 
 /**
- * @author Aries McRae
+ * @author ariesmcrae.com
  */
 public interface RelationshipPresenter extends Presenter {
 	void onNameSpaceListBoxChange(String selectedNamespace);

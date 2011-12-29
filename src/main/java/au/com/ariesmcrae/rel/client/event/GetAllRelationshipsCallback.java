@@ -26,7 +26,7 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
 
 /**
- * @author Aries McRae
+ * @author ariesmcrae.com
  */
 public class GetAllRelationshipsCallback implements RequestCallback {
 	

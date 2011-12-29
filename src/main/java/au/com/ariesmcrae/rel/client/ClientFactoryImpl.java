@@ -26,7 +26,7 @@ import com.google.gwt.place.shared.PlaceController;
 
 
 /**
- * Sample implementation of {@link ClientFactory}.
+ * @author ariesmcrae.com
  */
 public class ClientFactoryImpl implements ClientFactory {
   

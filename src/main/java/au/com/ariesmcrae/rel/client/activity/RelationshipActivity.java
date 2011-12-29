@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.HTML;
 
 /**
- * @author Aries McRae
+ * @author ariesmcrae.com
  */
 public class RelationshipActivity extends AbstractActivity implements RelationshipPresenter {
 

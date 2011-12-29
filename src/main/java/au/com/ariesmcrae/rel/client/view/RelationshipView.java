@@ -22,7 +22,7 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.ui.IsWidget;
 
 /**
- * @author Aries McRae
+ * @author ariesmcrae.com
  */
 public interface RelationshipView  extends IsWidget{
 

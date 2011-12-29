@@ -15,6 +15,10 @@
  */
 package au.com.ariesmcrae.rel.client.presenter;
 
+
+/**
+ * @author ariesmcrae.com
+ */
 public interface Presenter {
 	   public void bind();
 }

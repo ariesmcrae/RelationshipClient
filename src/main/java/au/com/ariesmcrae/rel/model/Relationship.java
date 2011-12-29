@@ -19,7 +19,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * @author Aries McRae
+ * @author ariesmcrae.com
  */
 public class Relationship extends JavaScriptObject {
 	

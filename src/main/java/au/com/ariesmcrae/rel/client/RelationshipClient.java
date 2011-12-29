@@ -30,7 +30,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 
 /**
- * @author Aries McRae
+ * @author ariesmcrae.com
  */
 public class RelationshipClient implements EntryPoint {
 

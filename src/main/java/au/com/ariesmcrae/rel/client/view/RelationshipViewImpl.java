@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * @author Aries McRae
+ * @author ariesmcrae.com
  */
 public class RelationshipViewImpl extends Composite implements RelationshipView {
 

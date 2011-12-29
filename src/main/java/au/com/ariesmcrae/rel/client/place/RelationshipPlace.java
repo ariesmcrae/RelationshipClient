@@ -4,6 +4,8 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
+ * @author ariesmcrae.com
+ * 
  * A place object representing a particular state of the UI. A Place can be
  * converted to and from a URL history token by defining a
  * {@link PlaceTokenizer} for each {@link Place}, and the
