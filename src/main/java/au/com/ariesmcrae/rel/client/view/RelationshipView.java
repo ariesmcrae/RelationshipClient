@@ -32,4 +32,6 @@ public interface RelationshipView  extends IsWidget{
 	void refreshNameSpaceListBox(JsArray<Relationship> relationships);
 	
 	void populateRelationshipDiffTable();
+	
+	String retrieveSelectedServer();	
 }

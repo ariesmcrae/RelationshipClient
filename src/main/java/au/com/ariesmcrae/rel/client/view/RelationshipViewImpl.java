@@ -40,6 +40,7 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 
 	private static RelationshipViewUiBinder uiBinder = GWT.create(RelationshipViewUiBinder.class);
 
+	@UiField ListBox listboxServer;
 	@UiField ListBox multiBoxNameSpace;
 	
 	private RelationshipPresenter presenter;
@@ -65,13 +66,23 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 			multiBoxNameSpace.addItem(relationship.getGroup() + " - " + relationship.getName(), relationship.getNamespace());
 		}
 	}
+
+	
+	@UiHandler("listboxServer")
+	void onChangeListboxServer(ChangeEvent event) {
+		if (!"DEV".equals(retrieveSelectedServer())) {
+			Window.alert("Not yet implemented");
+		}
+	}
 	
 	
 	
 	@UiHandler("multiBoxNameSpace")
-	void onChange(ChangeEvent event) {
+	void onChangeMultiBoxNameSpace(ChangeEvent event) {
+		String selectedServer = retrieveSelectedServer();
 		String selectedNameSpace = multiBoxNameSpace.getValue(multiBoxNameSpace.getSelectedIndex());
-		presenter.onNameSpaceListBoxChange(selectedNameSpace);
+		
+		presenter.onNameSpaceListBoxChange(selectedServer, selectedNameSpace);
 	}
 
 
@@ -80,6 +91,11 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 		Window.alert("not yet implemented");
 	}
 	
+	
+	
+	public String retrieveSelectedServer() {
+		return listboxServer.getValue(listboxServer.getSelectedIndex());			
+	}
 
 }
 

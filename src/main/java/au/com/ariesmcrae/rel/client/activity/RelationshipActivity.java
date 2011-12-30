@@ -41,7 +41,8 @@ public class RelationshipActivity extends AbstractActivity implements Relationsh
 	
 	
 	private void fetchRelationshipNameSpaces() {
-		final String GET_RELATIONSHIPS_URL = URL.encode("http://localhost:9081/RelationshipLoader/relationships"); //TODO dev properties file.		
+		String selectedServer = view.retrieveSelectedServer();
+		final String GET_RELATIONSHIPS_URL = URL.encode(selectedServer + "/relationships"); //e.g. http://relationshipserver.appspot.com/relationships. TODO dev properties file.		
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, GET_RELATIONSHIPS_URL);
 	    builder.setHeader("Accept", "application/json");
 	    builder.setCallback(new GetAllRelationshipsCallback(view)); 	    
@@ -69,8 +70,7 @@ public class RelationshipActivity extends AbstractActivity implements Relationsh
 
 
 
-	public void onNameSpaceListBoxChange(String selectedNameSpace) {
-		System.out.println("xxxxxselectedNameSpace=" + selectedNameSpace);
+	public void onNameSpaceListBoxChange(String selectedServer, String selectedNameSpace) {
 		view.populateRelationshipDiffTable();
 	}
 
