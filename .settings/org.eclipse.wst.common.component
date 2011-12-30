@@ -3,7 +3,6 @@
     <wb-module deploy-name="RelationshipClient">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="context-root" value="RelationshipClient"/>
         <property name="java-output-path" value="/RelationshipClient/build/classes"/>
     </wb-module>
