@@ -3,7 +3,28 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-
+	
+	<ui:style>
+		/* TODO: Externalize CSS */
+		.spinnerDiv {
+			position: fixed;
+			top: 25%;
+			left: 50%;
+			margin-left: -50px; /* half width of the spinner gif */
+			margin-top: -50px; /* half height of the spinner gif */
+			text-align:center;
+			z-index:1234;
+			overflow: auto;
+			width: 100px; /* width of the spinner gif */
+			height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+		}
+	</ui:style>
+  
+	<g:HTMLPanel>
+		<div ui:field='spinnerDiv' class="{style.spinnerDiv}">
+			<img src="ajax-loader.gif" alt="Loading"/>
+		</div>
+		
 	<g:VerticalPanel>
 		<g:ListBox ui:field="listboxServer"  multipleSelect="false" visibleItemCount="1" selectedIndex="0">
 			<g:item value="http://relationshipserver.appspot.com">DEV</g:item>
@@ -14,5 +35,10 @@
 		</g:ListBox>
 	
 		<g:ListBox ui:field="multiBoxNameSpace" multipleSelect="false" visibleItemCount="10" selectedIndex="-1" />
-	</g:VerticalPanel>
+	</g:VerticalPanel>		
+	</g:HTMLPanel>  
+  
+
+
+
 </ui:UiBinder>

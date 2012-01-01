@@ -7,13 +7,13 @@ import com.ariesmcrae.rel.client.presenter.RelationshipPresenter;
 import com.ariesmcrae.rel.client.view.RelationshipView;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.google.gwt.user.client.ui.HTML;
 
 /**
  * @author ariesmcrae.com
@@ -22,19 +22,17 @@ public class RelationshipActivity extends AbstractActivity implements Relationsh
 
 	private final ClientFactory clientFactory;
 	private RelationshipView view;
-	private HTML ajaxLoad = new HTML("<img src=\"ajax-loader.gif\"/>");
 	
 	public RelationshipActivity(ClientFactory newClientFactory) {
 		clientFactory = newClientFactory;
+		view = clientFactory.getRelationshipView();			
 	}
 
 	
 	
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		view = clientFactory.getRelationshipView();		
 		fetchRelationshipNameSpaces();
 		panel.setWidget(view);
-
 		bind();		
 	}	
 
@@ -48,10 +46,10 @@ public class RelationshipActivity extends AbstractActivity implements Relationsh
 	    builder.setCallback(new GetAllRelationshipsCallback(view)); 	    
 	    
 	    try {
-	    	ajaxLoad.setVisible(true);
-	    	
+	    	view.changeSpinnerVisibility(Visibility.VISIBLE);
 			builder.send();
 		} catch (RequestException e) {
+	    	view.changeSpinnerVisibility(Visibility.HIDDEN);			
 			GWT.log("doRequestBuilder exception=" + e.getMessage());	
 		}	    
 	}

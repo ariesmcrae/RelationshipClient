@@ -19,6 +19,7 @@ package com.ariesmcrae.rel.client.view;
 import com.ariesmcrae.rel.client.presenter.RelationshipPresenter;
 import com.ariesmcrae.rel.model.Relationship;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.user.client.ui.IsWidget;
 
 /**
@@ -34,4 +35,6 @@ public interface RelationshipView  extends IsWidget{
 	void populateRelationshipDiffTable();
 	
 	String retrieveSelectedServer();	
+	
+	void changeSpinnerVisibility(Visibility visibility);
 }

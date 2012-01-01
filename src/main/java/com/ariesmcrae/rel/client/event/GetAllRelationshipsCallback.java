@@ -19,8 +19,7 @@ package com.ariesmcrae.rel.client.event;
 import com.ariesmcrae.rel.client.view.RelationshipView;
 import com.ariesmcrae.rel.model.Relationship;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Style.Cursor;
+import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
@@ -39,18 +38,19 @@ public class GetAllRelationshipsCallback implements RequestCallback {
 	
 	public void onResponseReceived(Request request, Response response) {
 		if (response.getStatusCode() != Response.SC_OK) {
+	    	view.changeSpinnerVisibility(Visibility.HIDDEN);				
 			GWT.log("Exiting prematurely. Callback is not " + Response.SC_OK + " but statusCode=" + response.getStatusCode());
-			Document.get().getBody().getStyle().setCursor( Cursor.DEFAULT );
 
 			return;
 		}
 
 		view.refreshNameSpaceListBox(Relationship.parse(response.getText()));
+    	view.changeSpinnerVisibility(Visibility.HIDDEN);			
 	}
 
 	public void onError(Request request, Throwable e) {
+    	view.changeSpinnerVisibility(Visibility.HIDDEN);			
 		GWT.log("Callback error=" + e.getMessage());
-		Document.get().getBody().getStyle().setCursor( Cursor.DEFAULT );		
 	}
 
 }

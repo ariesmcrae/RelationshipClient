@@ -20,6 +20,8 @@ import com.ariesmcrae.rel.client.presenter.RelationshipPresenter;
 import com.ariesmcrae.rel.model.Relationship;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -40,6 +42,7 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 
 	private static RelationshipViewUiBinder uiBinder = GWT.create(RelationshipViewUiBinder.class);
 
+	@UiField DivElement spinnerDiv;
 	@UiField ListBox listboxServer;
 	@UiField ListBox multiBoxNameSpace;
 	
@@ -96,6 +99,13 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 	public String retrieveSelectedServer() {
 		return listboxServer.getValue(listboxServer.getSelectedIndex());			
 	}
+	
+	
+	
+	public void changeSpinnerVisibility(Visibility visibility) {
+		spinnerDiv.getStyle().setVisibility(visibility);
+	}
+
 
 }
 
