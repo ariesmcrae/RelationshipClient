@@ -17,6 +17,7 @@ package com.ariesmcrae.rel.client.view;
 
 
 import com.ariesmcrae.rel.client.presenter.RelationshipPresenter;
+import com.ariesmcrae.rel.model.Participant;
 import com.ariesmcrae.rel.model.Relationship;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
@@ -73,7 +74,8 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 	
 	@UiHandler("listboxServer")
 	void onChangeListboxServer(ChangeEvent event) {
-		if (!"DEV".equals(retrieveSelectedServer())) {
+		String selectedServerText = listboxServer.getItemText(listboxServer.getSelectedIndex());				
+		if (!"DEV".equals(selectedServerText)) {
 			Window.alert("Not yet implemented");
 		}
 	}
@@ -90,8 +92,11 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 
 
 
-	public void populateRelationshipDiffTable() {
-		Window.alert("not yet implemented");
+	public void populateRelationshipDiffTable(JsArray<Participant> participants) {
+		for (int i = 0; i < participants.length(); i++) {
+			Participant participant = participants.get(i);
+			Window.alert("xxxparticipantkey=" + participant.getKey()); //TODO: populate flextable
+		}		
 	}
 	
 	

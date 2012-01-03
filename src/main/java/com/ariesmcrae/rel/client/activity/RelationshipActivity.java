@@ -3,6 +3,7 @@ package com.ariesmcrae.rel.client.activity;
 
 import com.ariesmcrae.rel.client.ClientFactory;
 import com.ariesmcrae.rel.client.event.GetAllRelationshipsCallback;
+import com.ariesmcrae.rel.client.event.GetParticipantsCallback;
 import com.ariesmcrae.rel.client.presenter.RelationshipPresenter;
 import com.ariesmcrae.rel.client.view.RelationshipView;
 import com.google.gwt.activity.shared.AbstractActivity;
@@ -38,6 +39,18 @@ public class RelationshipActivity extends AbstractActivity implements Relationsh
 
 	
 	
+	public void bind() {
+		view.setPresenter(this);
+	}
+	
+
+	
+	public void goTo(Place newPlace) {
+		clientFactory.getPlaceController().goTo(newPlace);
+	}
+
+
+	
 	private void fetchRelationshipNameSpaces() {
 		String selectedServer = view.retrieveSelectedServer();
 		final String GET_RELATIONSHIPS_URL = URL.encode(selectedServer + "/relationships"); //e.g. http://relationshipserver.appspot.com/relationships. TODO dev properties file.		
@@ -52,24 +65,28 @@ public class RelationshipActivity extends AbstractActivity implements Relationsh
 	    	view.changeSpinnerVisibility(Visibility.HIDDEN);			
 			GWT.log("doRequestBuilder exception=" + e.getMessage());	
 		}	    
-	}
-
-
-
-	public void bind() {
-		view.setPresenter(this);
-	}
+	}	
 	
 
 	
-	public void goTo(Place newPlace) {
-		clientFactory.getPlaceController().goTo(newPlace);
-	}
-
-
-
+	
 	public void onNameSpaceListBoxChange(String selectedServer, String selectedNameSpace) {
-		view.populateRelationshipDiffTable();
+		String escapedNamespace = selectedNameSpace.replaceAll("/", "&#047");
+		final String GET_PARTICIPANTS_URL = URL.encode(selectedServer + "/relationships/" + escapedNamespace); //e.g. http://relationshipserver.appspot.com/relationships. TODO dev properties file.		
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, GET_PARTICIPANTS_URL);
+	    builder.setHeader("Accept", "application/json");
+	    builder.setCallback(new GetParticipantsCallback(view)); 	    
+	    
+	    try {
+	    	view.changeSpinnerVisibility(Visibility.VISIBLE);
+			builder.send();
+		} catch (RequestException e) {
+	    	view.changeSpinnerVisibility(Visibility.HIDDEN);			
+			GWT.log("doRequestBuilder exception=" + e.getMessage());	
+		}	    
 	}
+	
+	
+	
 
 }

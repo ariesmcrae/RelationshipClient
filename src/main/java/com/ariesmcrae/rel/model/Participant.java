@@ -13,28 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ariesmcrae.rel.client.view;
+package com.ariesmcrae.rel.model;
 
-
-import com.ariesmcrae.rel.client.presenter.RelationshipPresenter;
-import com.ariesmcrae.rel.model.Participant;
-import com.ariesmcrae.rel.model.Relationship;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.dom.client.Style.Visibility;
-import com.google.gwt.user.client.ui.IsWidget;
 
 /**
  * @author ariesmcrae.com
  */
-public interface RelationshipView  extends IsWidget{
+public class Participant extends JavaScriptObject {
 
-	void setPresenter(RelationshipPresenter presenter);
+	protected Participant() {}
 	
-	void refreshNameSpaceListBox(JsArray<Relationship> relationships);
 	
-	void populateRelationshipDiffTable(JsArray<Participant> participants);
+	public final native String getKey() /*-{ 
+		return this.key; 
+	}-*/;
 	
-	String retrieveSelectedServer();	
 	
-	void changeSpinnerVisibility(Visibility visibility);
+	
+	public final native String getCsvValue() /*-{ 
+		return this.csvValue; 
+	}-*/;
+	
+	
+	public final native String getServerValue() /*-{ 
+		return this.serverValue; 
+	}-*/;	
+	
+	
+	public static final native JsArray<Participant> parse(String json) /*-{
+		return eval(json);
+	}-*/;	
+
 }
