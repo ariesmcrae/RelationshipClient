@@ -18,6 +18,16 @@
 			width: 100px; /* width of the spinner gif */
 			height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
 		}
+		
+		.table-style {
+      		border: 1px solid black;
+    	}
+    	
+		.diffTableHeader {
+		  background-color: orange;
+		  color: black;
+		  font-style: italic;
+		}     			
 	</ui:style>
   
 	<g:HTMLPanel>
@@ -25,17 +35,21 @@
 			<img src="ajax-loader.gif" alt="Loading"/>
 		</div>
 		
-	<g:VerticalPanel>
-		<g:ListBox ui:field="listboxServer"  multipleSelect="false" visibleItemCount="1" selectedIndex="0">
-			<g:item value="http://relationshipserver.appspot.com">DEV</g:item>
-			<g:item value="http://sit.relationshipserver.appspot.com">SIT</g:item>
-			<g:item value="http://uat.relationshipserver.appspot.com">UAT</g:item>
-			<g:item value="http://pat.relationshipserver.appspot.com">PAT</g:item>
-			<g:item value="http://prd.relationshipserver.appspot.com">PRD</g:item>			
-		</g:ListBox>
-	
-		<g:ListBox ui:field="multiBoxNameSpace" multipleSelect="false" visibleItemCount="10" selectedIndex="-1" />
-	</g:VerticalPanel>		
+		<g:VerticalPanel>
+			<g:ListBox ui:field="listboxServer"  multipleSelect="false" visibleItemCount="1" selectedIndex="0">
+				<g:item value="http://relationshipsrvr.appspot.com">DEV</g:item>
+				<g:item value="http://sit.relationshipsrvr.appspot.com">SIT</g:item>
+				<g:item value="http://uat.relationshipsrvr.appspot.com">UAT</g:item>
+				<g:item value="http://pat.relationshipsrvr.appspot.com">PAT</g:item>
+				<g:item value="http://prd.relationshipsrvr.appspot.com">PRD</g:item>			
+			</g:ListBox>
+		
+			<g:ListBox ui:field="multiBoxNameSpace" multipleSelect="false" visibleItemCount="10" selectedIndex="-1" />
+			
+ 			<g:FlexTable ui:field="diffTable" styleName="{style.table-style}" borderWidth="1"/>
+		
+			
+		</g:VerticalPanel>		
 	</g:HTMLPanel>  
   
 

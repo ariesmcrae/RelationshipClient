@@ -30,6 +30,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -46,12 +47,15 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 	@UiField DivElement spinnerDiv;
 	@UiField ListBox listboxServer;
 	@UiField ListBox multiBoxNameSpace;
+	@UiField (provided = true) FlexTable diffTable;	
 	
 	private RelationshipPresenter presenter;
 
 
 	
 	public RelationshipViewImpl() {
+		diffTable = new FlexTable();		
+		initDiffTable();	
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
@@ -59,8 +63,19 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 	
 	public void setPresenter(RelationshipPresenter newPresenter) {
 		presenter = newPresenter;
-		
 	}
+	
+	
+	
+	private void initDiffTable() {
+		diffTable.removeAllRows();		
+		diffTable.setText(0, 0, "Key");
+		diffTable.setText(0, 1, "CSV Value");
+		diffTable.setText(0, 2, "Server Value");
+		diffTable.getRowFormatter().addStyleName(0, "diffTableHeader");
+		diffTable.setVisible(false);	
+	}
+	
 	
 
 
@@ -74,10 +89,16 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 	
 	@UiHandler("listboxServer")
 	void onChangeListboxServer(ChangeEvent event) {
+		initDiffTable();		
+		
 		String selectedServerText = listboxServer.getItemText(listboxServer.getSelectedIndex());				
+		
 		if (!"DEV".equals(selectedServerText)) {
 			Window.alert("Not yet implemented");
 		}
+		
+		//TODO re-populate multiBoxNameSpace
+		
 	}
 	
 	
@@ -93,10 +114,23 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 
 
 	public void populateRelationshipDiffTable(JsArray<Participant> participants) {
+		initDiffTable();	
+		
 		for (int i = 0; i < participants.length(); i++) {
 			Participant participant = participants.get(i);
-			Window.alert("xxxparticipantkey=" + participant.getKey()); //TODO: populate flextable
-		}		
+			
+			int newRow = i;			
+			newRow++; //because we need to start at 1, since diffTable header is on position zero.
+			
+			diffTable.setText(newRow, 0, participant.getKey());
+			diffTable.setText(newRow, 1, participant.getCsvValue());
+			diffTable.setText(newRow, 2, participant.getServerValue());					
+
+		}
+		
+		if (diffTable.getRowCount() > 1) {
+			diffTable.setVisible(true);
+		}
 	}
 	
 	
