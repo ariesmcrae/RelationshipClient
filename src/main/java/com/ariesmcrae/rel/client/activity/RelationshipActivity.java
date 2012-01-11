@@ -34,6 +34,7 @@ public class RelationshipActivity extends AbstractActivity implements Relationsh
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		fetchRelationshipNameSpaces();
 		panel.setWidget(view);
+		view.changeNoResultsVisibility(Visibility.HIDDEN);	
 		bind();		
 	}	
 

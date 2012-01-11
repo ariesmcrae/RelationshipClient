@@ -37,4 +37,6 @@ public interface RelationshipView  extends IsWidget{
 	String retrieveSelectedServer();	
 	
 	void changeSpinnerVisibility(Visibility visibility);
+	
+	void changeNoResultsVisibility(Visibility visibility);
 }

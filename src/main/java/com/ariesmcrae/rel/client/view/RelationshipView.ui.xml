@@ -24,10 +24,15 @@
     	}
     	
 		.diffTableHeader {
-		  background-color: orange;
-		  color: black;
-		  font-style: italic;
+			background-color: orange;
+		  	color: black;
+		  	font-style: italic;
 		}     			
+		
+		.noResultsDiv{
+			visibility: hidden;
+		}
+		
 	</ui:style>
   
 	<g:HTMLPanel>
@@ -48,6 +53,7 @@
 			
  			<g:FlexTable ui:field="diffTable" styleName="{style.table-style}" borderWidth="1"/>
 		
+			<g:HTMLPanel><div ui:field="noResultsDiv" class="style.noResultsDiv">No Results.</div></g:HTMLPanel>
 			
 		</g:VerticalPanel>		
 	</g:HTMLPanel>  

@@ -48,6 +48,7 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 	@UiField ListBox listboxServer;
 	@UiField ListBox multiBoxNameSpace;
 	@UiField (provided = true) FlexTable diffTable;	
+	@UiField DivElement noResultsDiv;
 	
 	private RelationshipPresenter presenter;
 
@@ -130,6 +131,9 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 		
 		if (diffTable.getRowCount() > 1) {
 			diffTable.setVisible(true);
+			changeNoResultsVisibility(Visibility.HIDDEN);
+		} else {
+			changeNoResultsVisibility(Visibility.VISIBLE);		
 		}
 	}
 	
@@ -145,6 +149,10 @@ public class RelationshipViewImpl extends Composite implements RelationshipView 
 		spinnerDiv.getStyle().setVisibility(visibility);
 	}
 
+	
+	public void changeNoResultsVisibility(Visibility visibility) {
+		noResultsDiv.getStyle().setVisibility(visibility);
+	}
 
 }
 

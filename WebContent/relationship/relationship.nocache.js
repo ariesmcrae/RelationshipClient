@@ -294,12 +294,12 @@ function relationship(){
   $stats && $stats({moduleName:'relationship', sessionId:$sessionId_0, subSystem:'startup', evtGroup:'bootstrap', millis:(new Date).getTime(), type:'selectingPermutation'});
   if (!isHostedMode()) {
     try {
-      unflattenKeylistIntoAnswers(['opera'], '0E0753D48C8F4E9F5CF66650D5786BD9');
-      unflattenKeylistIntoAnswers(['safari'], '20FD025D2ECAD2009094A092BF82E337');
-      unflattenKeylistIntoAnswers(['gecko1_8'], '3457DBA102795BF61F23B831558054A5');
-      unflattenKeylistIntoAnswers(['ie8'], '5DC64DBD8FF2648ED805A134F14F39CC');
-      unflattenKeylistIntoAnswers(['ie9'], '7E9830AB60A86596068EA157A3024121');
-      unflattenKeylistIntoAnswers(['ie6'], 'D5AA9A607EA0A206F2903EC7E731100D');
+      unflattenKeylistIntoAnswers(['safari'], '5BA9AA88DAA2FCF268476557BFCD9298');
+      unflattenKeylistIntoAnswers(['ie6'], '803579C2E1606253F1ECF568EE7B3CCA');
+      unflattenKeylistIntoAnswers(['ie9'], '8A2CD18F85741CAF52322292C942D4C1');
+      unflattenKeylistIntoAnswers(['opera'], 'C3B941D48DB9215EC643E73BD891EF44');
+      unflattenKeylistIntoAnswers(['gecko1_8'], 'C80EFF504ED7630671BE4782E5134BC6');
+      unflattenKeylistIntoAnswers(['ie8'], 'D1D3F5D830CE441912E9D6D702C533F8');
       strongName = answers[computePropValue('user.agent')];
       var idx = strongName.indexOf(':');
       if (idx != -1) {
@@ -316,11 +316,11 @@ function relationship(){
   function onBodyDone(){
     if (!bodyDone) {
       bodyDone = true;
-      if (!__gwt_stylesLoaded['gwt/standard/standard.css']) {
+      if (!__gwt_stylesLoaded['gwt/clean/clean.css']) {
         var l = $doc_0.createElement('link');
-        __gwt_stylesLoaded['gwt/standard/standard.css'] = l;
+        __gwt_stylesLoaded['gwt/clean/clean.css'] = l;
         l.setAttribute('rel', 'stylesheet');
-        l.setAttribute('href', base + 'gwt/standard/standard.css');
+        l.setAttribute('href', base + 'gwt/clean/clean.css');
         $doc_0.getElementsByTagName('head')[0].appendChild(l);
       }
       maybeStartModule();
